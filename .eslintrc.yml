@@ -1,0 +1,12 @@
+root: true
+extends:
+  - 'airbnb-base'
+env:
+  node: true
+  browser: true
+rules:
+  import/extensions:
+    - error
+    - ignorePackages
+    - js: always
+  no-console: off
