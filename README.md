@@ -156,14 +156,3 @@ Your answer: yes
 Correct!
 ```
 Весь вывод и логика в случае правильного и неправильного ответа повторяют предыдущие шаги.
-
-https://asciinema.org/a/pokz30FuyHWVbgiDuYFsQvZx1
-
-https://asciinema.org/a/sRHzoLczYDyLkdhXiHnK9T0g6
-
-https://asciinema.org/a/NDRh441bsbrUpSXciWKy0CeJy
-
-https://asciinema.org/a/1aN9KsZxlMg1Bjgyp1nr8GsTr
-
-https://asciinema.org/a/YZHXHjGbG7SDkYLdfXuTd1eOj
-
