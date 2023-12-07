@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/DarthVanster/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/DarthVanster/frontend-project-44/actions)",
   "bin": {
-	"brain-even": "bin/brain-even.js",
 	"brain-games": "bin/brain-games.js",
+	"brain-even": "bin/brain-even.js",
 	"brain-calc": "bin/brain-calc.js",
 	"brain-gcd": "bin/brain-gcd.js",
 	"brain-progression": "bin/brain-progression.js",
