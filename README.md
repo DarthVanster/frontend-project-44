@@ -2,8 +2,15 @@
 [![Actions Status](https://github.com/DarthVanster/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/DarthVanster/frontend-project-44/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ef8de75b60091c5879db/maintainability)](https://codeclimate.com/github/DarthVanster/frontend-project-44/maintainability)
 
-# Игра: "Проверка на чётность"
-Необходимо реализовать игру "Проверка на чётность". Суть игры в следующем: пользователю показывается случайное число. И ему нужно ответить yes, если число чётное, или no — если нечётное:
+# Instructions for installing and running the game:
+1) Create a directory where you place the project and navigate to this directory.
+2) Run git pull to transfer all files from the remote repository to your local repository.
+3) While in the root directory of the project, run npm publish --dry-run to update packages in the RPM repository.
+4) To install the package globally from the local directory, run the npm link command.
+5) Run any game with the brain-(name of the game) command, for example: brain-games, brain-calc, brain-even.
+
+# Game: "Parity Check"
+It is necessary to implement the "Parity Check" game. The essence of the game is as follows: a random number is shown to the user. And he needs to answer yes if the number is even, or no if it is odd:
 ```
 Welcome to the Brain Games!
 May I have your name? Bill
@@ -12,22 +19,22 @@ Answer "yes" if the number is even, otherwise answer "no".
 Question: 15
 Your answer: yes
 ```
-В случае, если пользователь даст неверный ответ, необходимо вывести:
+If the user gives an incorrect answer, it is necessary to output:
 ```
 'yes' is wrong answer ;(. Correct answer was 'no'.
 Let's try again, Bill!
 ```
-и завершить игру. В случае, если пользователь ввел верный ответ, нужно отобразить:
+and complete the game. If the user entered the correct answer, you need to display:
 ```
 Correct!
 ```
-и приступить к следующему числу.
+and proceed to the next number.
 
-Пользователь должен дать правильный ответ на три вопроса подряд. После успешной игры нужно вывести:
+The user must give the correct answer to three questions in a row. After a successful game, you need to withdraw:
 ```
 Congratulations, Bill!
 ```
-Вывод должен получиться следующий:
+The output should be as follows:
 ```
 $ brain-even
 
@@ -46,12 +53,12 @@ Your answer: no
 Correct!
 Congratulations, Sam!
 ```
-- Любой некорректный ввод считается ошибкой (например, n) и равносилен неправильному ответу.
+- Any incorrect input is considered an error (for example, n) and is equivalent to an incorrect answer.
 
-# Игра: "Калькулятор"
-Необходимо реализовать игру "Калькулятор". Суть игры в следующем: пользователю показывается случайное математическое выражение, например 35 + 16, которое нужно вычислить и записать правильный ответ.
+# Game: "Calculator"
+It is necessary to implement the Calculator game. The essence of the game is as follows: the user is shown a random mathematical expression, for example 35 + 16, which needs to be calculated and written down the correct answer.
 
-Вывод должен получиться следующий:
+The output should be as follows:
 ```
 $ brain-calc
 
@@ -70,22 +77,22 @@ Your answer: 175
 Correct!
 Congratulations, Sam!
 ```
-- Достаточно реализовать следующие операции: +, - и *.
-- Операции, как и числа, выбираются случайным образом.
+- It is enough to implement the following operations: +, - and *.
+- Operations, like numbers, are randomly selected.
 
-В случае, если пользователь даст неверный ответ, необходимо вывести:
+If the user gives an incorrect answer, it is necessary to output:
 ```
 Question: 25 * 7
 Your answer: 145
 '145' is wrong answer ;(. Correct answer was '175'.
 Let's try again, Sam!
 ```
-и завершить игру.
+and complete the game.
 
-# Игра "НОД"
-Необходимо реализовать игру "наибольший общий делитель (НОД)". Суть игры в следующем: пользователю показывается два случайных числа, например, 25 50. Пользователь должен вычислить и ввести наибольший общий делитель этих чисел.
+# The NODE game
+It is necessary to implement the game "the greatest common divisor (NODE)". The essence of the game is as follows: the user is shown two random numbers, for example, 25 50. The user must calculate and enter the largest common divisor of these numbers.
 
-Вывод должен получиться следующий:
+The output should be as follows:
 ```
 $ brain-gcd
 
@@ -104,19 +111,19 @@ Your answer: 3
 Correct!
 Congratulations, Sam!
 ```
-В случае, если пользователь даст неверный ответ, необходимо вывести:
+If the user gives an incorrect answer, it is necessary to output:
 ```
 Question: 25 50
 Your answer: 1
 '1' is wrong answer ;(. Correct answer was '25'.
 Let's try again, Sam!
 ```
-# Игра "Арифметическая прогрессия"
-Показываем игроку ряд чисел, образующий арифметическую прогрессию, заменив любое из чисел двумя точками. Игрок должен определить это число.
+# The Arithmetic Progression game
+We show the player a series of numbers forming an arithmetic progression by replacing any of the numbers with two dots. The player must determine this number.
 
-Рекомендуемая длина прогрессии – 10 чисел. Длина может генерироваться случайным образом, но должна содержать не менее 5-ти чисел!
-Позиция спрятанного элемента каждый раз изменяется (выбирается случайным образом).
-Пример:
+The recommended length of the progression is 10 numbers. The length can be generated randomly, but must contain at least 5 numbers!
+The position of the hidden element changes each time (randomly selected).
+Example:
 ```
 $ brain-progression
 
@@ -135,15 +142,15 @@ Your answer: 59
 Correct!
 Congratulations, Sam!
 ```
-В случае, если пользователь даст неверный ответ, необходимо вывести:
+If the user gives an incorrect answer, it is necessary to output:
 ```
 Question: 5 7 9 11 13 .. 17 19 21 23
 Your answer: 1
 '1' is wrong answer ;(. Correct answer was '15'.
 Let's try again, Sam!
 ```
-# Игра "Простое ли число?"
-Пример:
+# Is the game "Is it a prime number?"
+Example:
 ```
 $ brain-prime
 
@@ -155,4 +162,4 @@ Question: 7
 Your answer: yes
 Correct!
 ```
-Весь вывод и логика в случае правильного и неправильного ответа повторяют предыдущие шаги.
+All the output and logic in the case of a correct and incorrect answer repeat the previous steps.
