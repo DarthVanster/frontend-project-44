@@ -2,6 +2,9 @@
 
 import { getUserName } from '../src/cli.js';
 
-const userName = getUserName();
-console.log(`Hello, ${userName}!`);
-console.log('Welcome to the Brain Games!');
+const startGame = () => {
+  const userName = getUserName();
+  console.log(`Hello, ${userName}!`);
+  console.log('Welcome to the Brain Games!');
+};
+startGame();

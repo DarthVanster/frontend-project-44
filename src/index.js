@@ -4,34 +4,34 @@ export default () => {
   let userName = null;
   let successCount = 0;
   let failCount = 0;
-  function reset() {
+  const reset = () => {
     successCount = 0;
     failCount = 0;
-  }
-  function finishWithLoose() {
+  };
+  const finishWithLoose = () => {
     console.log(`Let's try again, ${userName}!`);
     reset();
-  }
-  function finishWithWin() {
+  };
+  const finishWithWin = () => {
     console.log(`Congratulations, ${userName}!`);
     reset();
-  }
-  function check({ rightAnswer, answer }, cb) {
+  };
+  const check = ({ rightAnswer, answer }, cb) => {
     if (answer === rightAnswer.toString()) {
       console.log('Correct!');
       successCount += 1;
-    }	else {
+    } else {
       console.log(`'${answer}' is wrong asnwer ;(. Correct answer was '${rightAnswer}'.`);
       failCount += 1;
     }
     if (failCount > MAX_FAIL_COUNT) {
       finishWithLoose();
-    }	else if (successCount >= MIN_SUCCESS_COUNT) {
+    } else if (successCount >= MIN_SUCCESS_COUNT) {
       finishWithWin();
-    }	else {
+    } else {
       cb();
     }
-  }
+  };
   return {
     userName,
     setUserName(name) {

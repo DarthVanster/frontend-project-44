@@ -1,12 +1,13 @@
 import { getAnswerForQuestion } from '../answerForQuestion.js';
 import getRandomNumber from '../randomNumber.js';
 
-export default (rules) => {
+const game = (rules) => {
   const Operations = ['+', '-', '*'];
-  function getOperation() {
-    return Operations[getRandomNumber(2)];
-  }
-  function next() {
+  const getOperation = () => {
+    const getOperat = Operations[getRandomNumber(2)];
+    return getOperat;
+  };
+  const next = () => {
     const num1 = getRandomNumber(99);
     const num2 = getRandomNumber(99);
     const operation = getOperation();
@@ -15,7 +16,7 @@ export default (rules) => {
     console.log(`Question: ${expression}`);
     const answer = getAnswerForQuestion('Your answer:');
     rules.check({ rightAnswer, answer }, next);
-  }
+  };
   return {
     start() {
       console.log('What is the result of the expression?');
@@ -23,3 +24,4 @@ export default (rules) => {
     },
   };
 };
+export default game;

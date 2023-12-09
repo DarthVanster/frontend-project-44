@@ -1,1 +1,2 @@
-export default (base) => Math.round(Math.random() * base);
+const getRandomNumber = (base) => Math.round(Math.random() * base);
+export default getRandomNumber;

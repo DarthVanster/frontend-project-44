@@ -1,16 +1,17 @@
 import { getAnswerForQuestion } from '../answerForQuestion.js';
 import getRandomNumber from '../randomNumber.js';
 
-export default (rules) => {
-  function createProgression(first, base, count) {
-    return [...Array(count)].map((_, i) => first + base * i);
-  }
-  function hideProgressionNumberByIndex(progression, index) {
+const game = (rules) => {
+  const createProgression = (first, base, count) => {
+    const createProg = [...Array(count)].map((_, i) => first + base * i);
+    return createProg;
+  };
+  const hideProgressionNumberByIndex = (progression, index) => {
     const p = [...progression];
     p[index] = '..';
     return p;
-  }
-  function next() {
+  };
+  const next = () => {
     const first = getRandomNumber(19);
     const base = getRandomNumber(5) + 1;
     const count = getRandomNumber(5) + 5;
@@ -22,7 +23,7 @@ export default (rules) => {
     console.log(`Question: ${progToShow}`);
     const answer = getAnswerForQuestion('Your answer:');
     rules.check({ rightAnswer, answer }, next);
-  }
+  };
   return {
     start() {
       console.log('What number is missing in the progression?');
@@ -30,3 +31,4 @@ export default (rules) => {
     },
   };
 };
+export default game;

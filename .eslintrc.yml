@@ -10,5 +10,4 @@ rules:
     - ignorePackages
     - js: always
   no-console: off
-  no-tabs: 0
   no-eval: 0
