@@ -11,9 +11,8 @@ const game = (rules) => {
     const num1 = getRandomNumber(99);
     const num2 = getRandomNumber(99);
     const operation = getOperation();
-    const expression = `${num1} ${operation} ${num2}`;
-    const rightAnswer = eval(expression);
-    console.log(`Question: ${expression}`);
+    const rightAnswer = `${num1} ${operation} ${num2}`;
+    console.log(`Question: ${rightAnswer}`);
     const answer = getAnswerForQuestion('Your answer:');
     rules.check({ rightAnswer, answer }, next);
   };
