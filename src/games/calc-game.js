@@ -2,25 +2,34 @@ import getRandomNumber from '../randomNumber.js';
 import { getAnswerForQuestion } from '../answerForQuestion.js';
 
 const game = (rules) => {
-  const operations = ['+', '-', '*'];
-  const getOperation = () => {
-    const getOperat = operations[getRandomNumber(2)];
-    return getOperat;
+  const operators = ['+', '-', '*'];
+  const getAnswer = (a, b, operator) => {
+    switch (operator) {
+      case '+':
+        return a + b;
+      case '-':
+        return a - b;
+      case '*':
+        return a * b;
+      default:
+        break;
+    }
+    return false;
   };
-  const next = () => {
-    const num1 = getRandomNumber(99);
-    const num2 = getRandomNumber(99);
-    const operation = getOperation();
-    const expression = `${num1} ${operation} ${num2}`;
-    const rightAnswer = eval(expression);
-    console.log(`Question: ${expression}`);
+  const generateQuestionAnswer = () => {
+    const a = getRandomNumber(99);
+    const b = getRandomNumber(99);
+    const operator = operators[getRandomNumber(2)];
+    const question = `${a} ${operator} ${b}`;
+    const rightAnswer = String(getAnswer(a, b, operator));
+    console.log(`Question: ${question}`);
     const answer = getAnswerForQuestion('Your answer:');
-    rules.check({ rightAnswer, answer }, next);
+    rules.check({ rightAnswer, answer }, generateQuestionAnswer);
   };
   return {
     start() {
       console.log('What is the result of the expression?');
-      next();
+      generateQuestionAnswer();
     },
   };
 };
