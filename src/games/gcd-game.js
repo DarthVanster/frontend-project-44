@@ -1,26 +1,30 @@
-import { getAnswerForQuestion } from '../answerForQuestion.js';
 import getRandomNumber from '../randomNumber.js';
+import executeGame from '../questionAnswer.js';
 
-const game = (rules) => {
-  const next = () => {
-    const gcd = (a, b) => {
-      if (!b) {
-        return a;
-      }
-      return gcd(b, a % b);
-    };
-    const num1 = getRandomNumber(9);
-    const num2 = getRandomNumber(9);
-    const rightAnswer = gcd(num1, num2);
-    console.log(`Question: ${num1} ${num2}`);
-    const answer = getAnswerForQuestion('Your answer:');
-    rules.check({ rightAnswer, answer }, next);
-  };
-  return {
-    start() {
-      console.log('Find the greatest common divisor of given numbers.');
-      next();
-    },
-  };
+const calculateGcd = (numberX, numberY) => {
+  let x = numberX;
+  let y = numberY;
+  while (x && y) {
+    if (x > y) x %= y;
+    else y %= x;
+  }
+  x += y;
+  return x;
 };
-export default game;
+
+const taskGame = 'Find the greatest common divisor of given numbers.';
+
+const maxRangeNumbers = 30;
+
+const getQuestionAndRigthAnswer = () => {
+  const numberX = getRandomNumber(1, maxRangeNumbers);
+  const numberY = getRandomNumber(1, maxRangeNumbers);
+  const rigthAnswer = calculateGcd(numberX, numberY).toString(10);
+  return [`${numberX} ${numberY}`, rigthAnswer];
+};
+
+const gcdGame = () => {
+  executeGame(taskGame, getQuestionAndRigthAnswer);
+};
+
+export default gcdGame;
