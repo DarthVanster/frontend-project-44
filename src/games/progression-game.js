@@ -1,34 +1,31 @@
-import { getAnswerForQuestion } from '../answerForQuestion.js';
 import getRandomNumber from '../randomNumber.js';
+import executeGame from '../questionAnswer.js';
 
-const game = (rules) => {
-  const createProgression = (first, base, count) => {
-    const createProg = [...Array(count)].map((_, i) => first + base * i);
-    return createProg;
-  };
-  const hideProgressionNumberByIndex = (progression, index) => {
-    const p = [...progression];
-    p[index] = '..';
-    return p;
-  };
-  const next = () => {
-    const first = getRandomNumber(19);
-    const base = getRandomNumber(5) + 1;
-    const count = getRandomNumber(5) + 5;
-    const progression = createProgression(first, base, count);
-    const rightAnswerIndex = getRandomNumber(count - 1);
-    const rightAnswer = progression[rightAnswerIndex];
-    const progToShow = hideProgressionNumberByIndex(progression, rightAnswerIndex)
-      .join(' ');
-    console.log(`Question: ${progToShow}`);
-    const answer = getAnswerForQuestion('Your answer:');
-    rules.check({ rightAnswer, answer }, next);
-  };
-  return {
-    start() {
-      console.log('What number is missing in the progression?');
-      next();
-    },
-  };
+const taskGame = 'What number is missing in this progression?';
+
+const startElement = getRandomNumber(1, 20);
+const elementsCount = 10;
+const maxStepProgression = 10;
+
+const getQuestionAndRigthAnswer = () => {
+  const step = getRandomNumber(1, maxStepProgression);
+  const indexMissingElement = getRandomNumber(1, elementsCount);
+  let progression = '';
+  let rigthAnswer;
+  for (let i = 1; i <= elementsCount; i += 1) {
+    if (i === indexMissingElement) {
+      progression += '..';
+      rigthAnswer = (startElement + (i - 1) * step).toString(10);
+    } else {
+      progression += (startElement + (i - 1) * step).toString(10);
+    }
+    progression += ' ';
+  }
+  return [progression, rigthAnswer];
 };
-export default game;
+
+const progressionGame = () => {
+  executeGame(taskGame, getQuestionAndRigthAnswer);
+};
+
+export default progressionGame;
