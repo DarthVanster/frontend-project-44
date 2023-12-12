@@ -1,24 +1,18 @@
-import { getAnswerForQuestion } from '../answerForQuestion.js';
-import getRandomNumber from '../randomNumber.js';
+import getRandomNuber from '../randomNumber.js';
+import executeGame from '../questionAnswer.js';
 
-const game = (rules) => {
-  const Answer = {
-    YES: 'yes',
-    NO: 'no',
-  };
-  const next = () => {
-    const num = getRandomNumber(99);
-    const rightAnswer = num % 2 === 0 ? Answer.YES : Answer.NO;
-    console.log(`Question: ${num}`);
-    const answer = getAnswerForQuestion('Your answer:');
+const isEven = number => (number % 2 === 0);
 
-    rules.check({ rightAnswer, answer }, next);
-  };
-  return {
-    start() {
-      console.log('Answer "yes" if the number is even, otherwise answer "no".');
-      next();
-    },
-  };
+const taskGame = 'Answer "yes" if number even otherwise answer "no".';
+
+const getQuestionAndRigthAnswer = () => {
+  const question = getRandomNuber();
+  const rigthAnswer = isEven(question) ? 'yes' : 'no';
+  return [`${question}`, rigthAnswer];
 };
-export default game;
+
+const evenGame = () => {
+  executeGame(taskGame, getQuestionAndRigthAnswer);
+};
+
+export default evenGame;
