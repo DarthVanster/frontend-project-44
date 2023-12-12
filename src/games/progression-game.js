@@ -1,31 +1,38 @@
-import getRandomNumber from '../randomNumber.js';
-import executeGame from '../questionAnswer.js';
+import getRandomIntInclusive from '../randomNumber.js';
+import play from '../structure.js';
 
-const taskGame = 'What number is missing in this progression?';
-
-const startElement = getRandomNumber(1, 20);
-const elementsCount = 10;
-const maxStepProgression = 10;
-
-const getQuestionAndRigthAnswer = () => {
-  const step = getRandomNumber(1, maxStepProgression);
-  const indexMissingElement = getRandomNumber(1, elementsCount);
-  let progression = '';
-  let rigthAnswer;
-  for (let i = 1; i <= elementsCount; i += 1) {
-    if (i === indexMissingElement) {
-      progression += '..';
-      rigthAnswer = (startElement + (i - 1) * step).toString(10);
-    } else {
-      progression += (startElement + (i - 1) * step).toString(10);
-    }
-    progression += ' ';
+const getProgression = () => {
+  const progression = [];
+  let last = getRandomIntInclusive(1, 10);
+  const step = getRandomIntInclusive(1, 5);
+  for (let i = 0; i < 10; i += 1) {
+    progression[i] = last;
+    last += step;
   }
-  return [progression, rigthAnswer];
+
+  return progression;
 };
 
-const progressionGame = () => {
-  executeGame(taskGame, getQuestionAndRigthAnswer);
+const playProgressionGame = () => {
+  const quest = 'What number is missing in the progression?';
+
+  const getQuestionAnswer = () => {
+    const questions = getProgression();
+
+    const chooseNumber = getRandomIntInclusive(0, 9);
+    const chosenAnswer = questions[chooseNumber];
+    questions[chooseNumber] = '..';
+    const correctAnswers = chosenAnswer;
+
+    const actualQuestions = questions.join(' ');
+
+    return [actualQuestions, correctAnswers];
+  };
+
+  return [getQuestionAnswer, quest];
 };
 
-export default progressionGame;
+export default () => {
+  const [getQuestionAnswer, quest] = playProgressionGame();
+  play(getQuestionAnswer, quest);
+};
