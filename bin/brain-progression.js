@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-import progression from '../src/games/progression-game.js';
 
-progression();
+import runBrainProgression from '../src/games/progression.js';
+
+runBrainProgression();
