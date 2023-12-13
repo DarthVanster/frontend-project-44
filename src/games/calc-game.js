@@ -1,5 +1,5 @@
 import getRandomNumber from '../randomNumber.js';
-import executeGame from '../questionAnswer.js';
+import braingame from '../questionAnswer.js';
 
 const operatorsCounts = 3;
 
@@ -42,7 +42,7 @@ const getQuestionAndRigthAnswer = () => {
 };
 
 const calculateGame = () => {
-  executeGame(taskGame, getQuestionAndRigthAnswer);
+  braingame(taskGame);
 };
 
 export default calculateGame;
