@@ -1,30 +1,45 @@
-import getRandomNumber from '../randomNumber.js';
-import executeGame from '../questionAnswer.js';
+import _ from 'lodash';
+import getRandomIntInclusive from '../randomNumber.js';
+import play from '../structure.js';
 
-const calculateGcd = (numberX, numberY) => {
-  let x = numberX;
-  let y = numberY;
-  while (x && y) {
-    if (x > y) x %= y;
-    else y %= x;
+const getGcd = (number1, number2) => {
+  const divisorsForNumber1 = [];
+  const divisorsForNumber2 = [];
+
+  for (let i = 1; i <= number1; i += 1) {
+    if ((number1 % i) === 0) {
+      divisorsForNumber1.push(i);
+    }
   }
-  x += y;
-  return x;
+
+  for (let i = 1; i <= number2; i += 1) {
+    if ((number2 % i) === 0) {
+      divisorsForNumber2.push(i);
+    }
+  }
+
+  const commonDivisors = _.intersection(divisorsForNumber1, divisorsForNumber2);
+  const maxCommonDivisor = _.max(commonDivisors);
+  return maxCommonDivisor;
 };
 
-const taskGame = 'Find the greatest common divisor of given numbers.';
+const playGcdGame = () => {
+  const quest = 'Find the greatest common divisor of given numbers.';
 
-const maxRangeNumbers = 30;
+  const getQuestionAnswer = () => {
+    const a = getRandomIntInclusive(1, 100);
+    const b = getRandomIntInclusive(1, 100);
 
-const getQuestionAndRigthAnswer = () => {
-  const numberX = getRandomNumber(1, maxRangeNumbers);
-  const numberY = getRandomNumber(1, maxRangeNumbers);
-  const rigthAnswer = calculateGcd(numberX, numberY).toString(10);
-  return [`${numberX} ${numberY}`, rigthAnswer];
+    const questions = `${a} ${b}`;
+    const correctAnswers = getGcd(a, b);
+
+    return [questions, correctAnswers];
+  };
+
+  return [getQuestionAnswer, quest];
 };
 
-const gcdGame = () => {
-  executeGame(taskGame, getQuestionAndRigthAnswer);
+export default () => {
+  const [getQuestionAnswer, quest] = playGcdGame();
+  play(getQuestionAnswer, quest);
 };
-
-export default gcdGame;
