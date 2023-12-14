@@ -27,6 +27,6 @@ export default (getQuestionAnswer, quest) => {
   console.log(`Hello, ${yourName}!`);
 
   console.log(quest);
-
+  
   gameplay(getQuestionAnswer, yourName);
 };
