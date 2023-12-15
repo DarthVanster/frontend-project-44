@@ -13,7 +13,6 @@ const gameplay = (getQuestionAnswer, yourName) => {
       console.log('Correct!');
     } else {
       console.log(`"${answer}" is a wrong answer ;(. Correct answer was "${correct}"`);
-      // eslint-disable-next-line no-unused-vars
       console.log(`Let's try again, ${yourName}!`);
       return;
     }
