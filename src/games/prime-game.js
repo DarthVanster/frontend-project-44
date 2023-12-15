@@ -18,7 +18,7 @@ const getQuestionAndRigthAnswer = () => {
   return [`${questionPrimeNumber}`, rigthAnswer];
 };
 
-const taskGame = 'Is this number prime?';
+const taskGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const startPrimeGame = () => {
   executeGame(taskGame, getQuestionAndRigthAnswer);
