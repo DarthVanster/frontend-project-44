@@ -1,5 +1,5 @@
 import getRandomNumber from '../randomNumber.js';
-import executeGame from '../execute.js';
+import executeGame from '../index.js';
 
 const calculateGcd = (numberX, numberY) => {
   let x = numberX;

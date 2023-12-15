@@ -1,5 +1,5 @@
 import getRandomNumber from '../randomNumber.js';
-import executeGame from '../execute.js';
+import executeGame from '../index.js';
 
 const operatorsCounts = 3;
 
