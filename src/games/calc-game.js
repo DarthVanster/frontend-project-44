@@ -1,35 +1,48 @@
-import getRandomIntInclusive from '../randomNumber.js';
-import play from '../structure.js';
+import getRandomNumber from '../randomNumber.js';
+import executeGame from '../execute.js';
 
-const playCalcGame = () => {
-  const quest = 'What is the result of the expression?';
+const operatorsCounts = 3;
 
-  const getQuestionAnswer = () => {
-    let questions = '';
-    let correctAnswers = 0;
-
-    const a = getRandomIntInclusive(1, 100);
-    const b = getRandomIntInclusive(1, 100);
-    const expressionSym = getRandomIntInclusive(1, 3);
-
-    if (expressionSym === 1) {
-      questions = `${a} + ${b}`;
-      correctAnswers = `${a + b}`;
-    } else if (expressionSym === 2) {
-      questions = `${a} - ${b}`;
-      correctAnswers = `${a - b}`;
-    } else if (expressionSym === 3) {
-      questions = `${a} * ${b}`;
-      correctAnswers = `${a * b}`;
-    }
-
-    return [questions, correctAnswers];
-  };
-
-  return [getQuestionAnswer, quest];
+const getRandomOperator = () => {
+  switch (getRandomNumber(1, operatorsCounts)) {
+    case 1:
+      return '+';
+    case 2:
+      return '-';
+    case 3:
+      return '*';
+    default:
+      return '+';
+  }
 };
 
-export default () => {
-  const [getQuestionAnswer, quest] = playCalcGame();
-  play(getQuestionAnswer, quest);
+const calculateExpresion = (numberLeft, operator, numberRigth) => {
+  switch (operator) {
+    case '+':
+      return (Number.parseInt(numberLeft, 10) + Number.parseInt(numberRigth, 10)).toString(10);
+    case '-':
+      return (Number.parseInt(numberLeft, 10) - Number.parseInt(numberRigth, 10)).toString(10);
+    case '*':
+      return (Number.parseInt(numberLeft, 10) * Number.parseInt(numberRigth, 10)).toString(10);
+    default:
+      return undefined;
+  }
 };
+
+const taskGame = 'What is the result of the expression?';
+
+const maxRangeNumbers = 30;
+
+const getQuestionAndRigthAnswer = () => {
+  const numberLeft = getRandomNumber(0, maxRangeNumbers);
+  const numberRigth = getRandomNumber(0, maxRangeNumbers);
+  const operator = getRandomOperator();
+  const rigthAnswer = calculateExpresion(numberLeft, operator, numberRigth);
+  return [`${numberLeft} ${operator} ${numberRigth}`, rigthAnswer];
+};
+
+const calculateGame = () => {
+  executeGame(taskGame, getQuestionAndRigthAnswer);
+};
+
+export default calculateGame;
