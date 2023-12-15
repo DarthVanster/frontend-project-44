@@ -1,7 +1,7 @@
 import getRandomNumber from '../randomNumber.js';
 import executeGame from '../index.js';
 
-const taskGame = 'What number is missing in this progression?';
+const taskGame = 'What number is missing in the progression?';
 
 const startElement = getRandomNumber(1, 20);
 const elementsCount = 10;
