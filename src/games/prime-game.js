@@ -1,29 +1,27 @@
-import getRandomIntInclusive from '../randomNumber.js';
-import play from '../structure.js';
+import getRandomNumber from '../randomNumber.js';
+import executeGame from '../index.js';
 
-const isPrime = (num) => {
-  for (let i = 2; i < num; i += 1) {
-    if (num % i === 0) {
-      return false;
-    }
+const isPrimeNumber = (number) => {
+  if (number < 2) return false;
+  const maxDivisor = Math.floor(Math.sqrt(number));
+  for (let i = 2; i <= maxDivisor; i += 1) {
+    if (number % i === 0) return false;
   }
-  return num !== 1;
+  return true;
 };
 
-const playPrimeGame = () => {
-  const quest = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const maxRangePrimeNumbers = 100;
 
-  const getQuestionAnswer = () => {
-    const questions = getRandomIntInclusive(1, 10);
-    const correctAnswers = isPrime(questions) ? 'yes' : 'no';
-
-    return [questions, correctAnswers];
-  };
-
-  return [getQuestionAnswer, quest];
+const getQuestionAndRigthAnswer = () => {
+  const questionPrimeNumber = getRandomNumber(2, maxRangePrimeNumbers);
+  const rigthAnswer = isPrimeNumber(questionPrimeNumber) ? 'yes' : 'no';
+  return [`${questionPrimeNumber}`, rigthAnswer];
 };
 
-export default () => {
-  const [getQuestionAnswer, quest] = playPrimeGame();
-  play(getQuestionAnswer, quest);
+const taskGame = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+const startPrimeGame = () => {
+  executeGame(taskGame, getQuestionAndRigthAnswer);
 };
+
+export default startPrimeGame;

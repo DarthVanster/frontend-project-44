@@ -1,20 +1,18 @@
-import getRandomIntInclusive from '../randomNumber.js';
-import play from '../structure.js';
+import getRandomNumber from '../randomNumber.js';
+import executeGame from '../index.js';
 
-const playEvenGame = () => {
-  const quest = 'Answer "yes" if the number is even, otherwise answer "no".';
+const isEven = (number) => (number % 2 === 0);
 
-  const getQuestionAnswer = () => {
-    const questions = getRandomIntInclusive(1, 100);
-    const correctAnswers = (questions % 2) > 0 ? 'no' : 'yes';
+const taskGame = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-    return [questions, correctAnswers];
-  };
-
-  return [getQuestionAnswer, quest];
+const getQuestionAndRigthAnswer = () => {
+  const question = getRandomNumber(0, 99);
+  const rigthAnswer = isEven(question) ? 'yes' : 'no';
+  return [`${question}`, rigthAnswer];
 };
 
-export default () => {
-  const [getQuestionAnswer, quest] = playEvenGame();
-  play(getQuestionAnswer, quest);
+const evenGame = () => {
+  executeGame(taskGame, getQuestionAndRigthAnswer);
 };
+
+export default evenGame;
