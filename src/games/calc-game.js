@@ -23,4 +23,5 @@ const getQuestionAnswer = () => {
 
 export default () => {
   const [getQuestionAnswer, quest] = playCalcGame();
-}
+  play(getQuestionAnswer, quest);
+};
