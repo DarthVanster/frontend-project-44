@@ -2,9 +2,9 @@ import getRandomNumber from '../randomNumber.js';
 import executeGame from '../index.js';
 
 const getRandomOperator = () => {
-  const operators = ['*','-','+'];
+  const operators = ['*', '-', '+'];
   const randomOperator = Math.floor(Math.random() * (operators.length));
-  const result = operators[ randomOperator ];
+  const result = operators[randomOperator];
   return result;
 };
 
