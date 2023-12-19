@@ -1,12 +1,10 @@
 import getRandomNumber from '../randomNumber.js';
 import executeGame from '../index.js';
 
-const operatorsCounts = 3;
-
 const getRandomOperator = () => {
   const operators = ['*','-','+'];
   const randomOperator = Math.floor(Math.random() * (operators.length));
-  const result = operators[randomOperator];
+  const result = operators[ randomOperator ];
   return result;
 };
 
@@ -18,6 +16,8 @@ const calculateExpresion = (numberLeft, operator, numberRigth) => {
       return (Number.parseInt(numberLeft, 10) - Number.parseInt(numberRigth, 10)).toString(10);
     case '*':
       return (Number.parseInt(numberLeft, 10) * Number.parseInt(numberRigth, 10)).toString(10);
+    default:
+      return undefined;
   }
 };
 
